@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://code.alibabatech.com/schema/dubbo
+		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="dubbo-mock-service" id="dubbo-mock-service"/>
+
+    <!--<dubbo:registry id= "localZK" address="${dubbo.local.zk}" register="${dubbo.register}" default="false" />-->
+    <dubbo:registry id="dubboZK" address="zookeeper://192.168.11.29:2181?backup=192.168.11.32:2181,192.168.11.20:2181" register="true" default="true"/>
+    <!--<dubbo:registry id="baseZK" address="${dubbo.base.zk}" register="${dubbo.register}" default="false"/>-->
+    <!--<dubbo:registry id="commonZK" address="${dubbo.common.zk}" register="${dubbo.register}" default="false"/>-->
+
+
+    <dubbo:reference id="registryService" interface="com.alibaba.dubbo.registry.RegistryService" check="false"/>
+
+
+
+</beans>
